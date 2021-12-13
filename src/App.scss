@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+html {
+box-sizing: border-box;
+}
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+*{
+margin: 0;
+padding: 0;
+}
+*,*:before,*:after {
+box-sizing: border-box;
+}
+input,
+textarea,
+select,
+button{
+outline: none;
+}
+input{
+line-height: normal;
+}
+label,
+button{
+cursor: pointer;
+}
+a {
+text-decoration: none;
+color: inherit;
+cursor: pointer;
+}
+img {
+display: block;
+max-width: 100%;
+}
+
+
+
+// css for common
+.btn {
+  padding: 10px;
+  font-weight: 500;
+  &-primary {
+    background-color: black;
+    color: white;
+    margin-right: 15px;
+    position: relative;
+    &:hover::after {
+      width: 100%;
+      // height: 100%;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.6);
+      top: 0;
+      left: 0;
+      z-index: 0;
+      transition: all 0.3s ease;
+    }
+  }
+  &-secondary {
+    background-color: white;
+    color: black;
+    position: relative;
+    &:hover::after {
+      width: 100%;
+      // height: 100%;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 100%;
+      background-color: rgba(34, 33, 33 , 0.2);
+      
+      top: 0;
+      left: 0;
+      transition: all 0.3s ease;
+    }
+  }
+}

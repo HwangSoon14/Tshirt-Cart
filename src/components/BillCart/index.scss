@@ -1,0 +1,30 @@
+.bill {
+    width: 400px;
+    height: 230px;
+    border: 6px solid black;
+    margin: 50px auto;
+    &-wrapper {
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    &-count , &-money {
+        display: inline-block;
+        font-weight: 700;
+        font-size: 20px;
+    }
+    &-money {
+        margin: 15px 0;
+    }
+    &-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+    
+    
+}
