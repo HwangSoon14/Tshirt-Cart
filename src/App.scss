@@ -85,3 +85,13 @@ max-width: 100%;
     }
   }
 }
+// .bg-red {
+//   color: white;
+// }
+.bg-active {
+  transition: all 0.3s ease-in;
+  color: red;
+}
+.text-big {
+  font-size: 18px;
+}

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { addToCart } from '../Cart/cartSlice';
 import './ProductInfo.scss';
 
@@ -22,7 +22,7 @@ const ProductInfo = () => {
             setProduct(thisProduct[0]);
         }
         fecthData();
-    } , [])
+    } , [productId])
     
     return (
         <div className='pi'>

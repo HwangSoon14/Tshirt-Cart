@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import CartPage from './pages/CartPage';
 import Detail from './pages/Detail';
 import Home from './pages/Home';
+import WishlistPage from './pages/WishlistPage';
 function App() {
   return (
     <div className="App">
@@ -12,7 +13,8 @@ function App() {
       <Routes>
         <Route path="/" exact element={<Home />} />
         <Route path="/product/:productId" exact element={<Detail/ >}/>
-        <Route path="/cart" element={<CartPage />} />
+        <Route path="/cart" exact element={<CartPage />} />
+        <Route path="/wishlist" exact element={<WishlistPage />} />
       </Routes>
       <Footer />
     </div>

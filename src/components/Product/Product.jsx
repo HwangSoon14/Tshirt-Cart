@@ -1,15 +1,25 @@
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import React from 'react';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart } from '../Cart/cartSlice';
+import { addToWishList, removeFromWishList } from '../Wishlist/wishListSlice';
 import './Product.scss';
-
 const Product = ({product}) => {
-    
+    const wishListProducts = useSelector((state) => state.wishListReducer.wishList);
+    const [activeIcon , setActiveIcon ] =useState(false);
+    const thisIndex = wishListProducts.findIndex(x => x.id === product.id);
     const dispatch = useDispatch();
+    
+
     const addToCartClick = (product) => {
             dispatch(addToCart(product));
+    }
+
+    const addToWishListFunc = (product) => {
+        setActiveIcon(!activeIcon);
+        (!activeIcon) && dispatch(addToWishList(product));
+        (activeIcon) && dispatch(removeFromWishList(product));
     }
     return (
         <div key={product.id} className='product'>
@@ -31,7 +41,10 @@ const Product = ({product}) => {
                     </Link>
                     
                 </div>
-                <FavoriteBorderIcon className='product-fav' />
+                <FavoriteIcon 
+                    className={(thisIndex !== -1) ? "product-fav bg-red bg-active" : "product-fav bg-red"}
+                    onClick={() => addToWishListFunc(product)}
+                     />
         </div>
     );
 };

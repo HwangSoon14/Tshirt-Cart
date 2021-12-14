@@ -5,7 +5,7 @@ import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
 import { decreaseQuantity, increaseQuantity, removeFromCart } from './cartSlice';
-const CartItem = ({key , product , index}) => {
+const CartItem = ({ product , index}) => {
     const dispatch = useDispatch();
 
     const handleIncrease = () => {

@@ -1,4 +1,4 @@
-import { createSlice , current} from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   list: [],
@@ -10,7 +10,7 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state,action) => {
-      const {list} = current(state);
+      // const {list} = current(state);
       const product = action.payload;
       const index = state.list.findIndex(x => x.id === product.id);
       if(index === -1) {
@@ -23,8 +23,8 @@ export const cartSlice = createSlice({
       }
     },
     removeFromCart(state , action) {
-      console.log(state.count);
-      const {list} = current(state);
+      // console.log(state.count);
+      // const {list} = current(state);
       const id = action.payload;
       
       
@@ -35,20 +35,24 @@ export const cartSlice = createSlice({
     },
     increaseQuantity(state , action) {
       const thisIndex = action.payload;
-      const {list} = current(state);
+      // const {list} = current(state);
       state.list[thisIndex].quantity++;
       state.count++;
     },
     decreaseQuantity(state , action) {
       const thisIndex = action.payload;
-      const {list} = current(state);
+      // const {list} = current(state);
       state.list[thisIndex].quantity--;
       state.count--;
     },
+    resetList(state) {
+      state.list = [];
+      state.count = 0;
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addToCart , removeFromCart , increaseQuantity , decreaseQuantity} = cartSlice.actions
+export const { addToCart , removeFromCart , increaseQuantity , decreaseQuantity , resetList} = cartSlice.actions
 
 export default cartSlice.reducer

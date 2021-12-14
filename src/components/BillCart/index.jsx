@@ -1,5 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { resetList } from '../Cart/cartSlice';
 import './index.scss';
 const BillCart = () => {
     const count = useSelector(state => state.cartReducer.count);
@@ -7,6 +8,11 @@ const BillCart = () => {
     const total = list.reduce((total , item) => 
         total + item.quantity * item.price
     , 0);
+    const dispatch = useDispatch();
+    const handleClickCheckOut = () => {
+        dispatch(resetList());
+        
+    }
     return (
         <div className='bill'>
             <div className='bill-wrapper'>
@@ -14,7 +20,12 @@ const BillCart = () => {
                 <span className='bill-money'>Total Bills: ${total}</span>
             </div>
             <div className='bill-btn'>
-                <button className='btn btn-primary'>CHECKOUT</button>
+                <button 
+                    className='btn btn-primary'
+                    onClick={handleClickCheckOut}
+                >
+                    CHECKOUT
+                </button>
                 <button className='btn btn-secondary'>RESET</button>
             </div>
         </div>
