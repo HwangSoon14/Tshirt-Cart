@@ -2,11 +2,11 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import productApi from '../../api/productApi';
 import { addToCart } from '../Cart/cartSlice';
 import './ProductInfo.scss';
 
 const ProductInfo = () => {
-    const baseURL = "https://raw.githubusercontent.com/mahmud-sajib/ecommerce-store-product-data/master/data.json"
     const [product , setProduct] = useState({});
     const {productId} = useParams();
     const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const ProductInfo = () => {
     
     useEffect(() => {
         const fecthData = async () => {
-            const response = await axios.get(`${baseURL}`);
+            const response = await productApi.getAll();
             const data = response.data;
             const thisProduct = data.filter((item) => (item.id === productId));
             setProduct(thisProduct[0]);

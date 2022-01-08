@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import './index.scss'
 import { Badge } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import BasicMenu from './BaseMenu';
+import { logout } from '../../app/userSlice';
 const Navbar = () => {
+    const dispatch = useDispatch();
     const countProductCart = useSelector((state) => state.cartReducer.count);
     const countProductHeart = useSelector((state) => state.wishListReducer.count);
+    const user = useSelector(state => state.userReducer.users);
+    console.log(user);
+    const handleLogOut = () => {
+        dispatch(logout());
+    }
     return (
         <div className='navbar'>
             <div className='navbar-wrapper'>
@@ -29,6 +37,10 @@ const Navbar = () => {
                             <ShoppingCartOutlinedIcon />
                         </Badge>
                     </Link>
+                    { (user.email) ? <BasicMenu name={user.email} onLogOut={handleLogOut} /> : <Link to="/login">
+                        <button className='btn btn-primary login-btn'>Login</button>
+                    </Link>}
+                    
                 </div>
             </div>
         </div>
